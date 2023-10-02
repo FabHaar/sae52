@@ -7,6 +7,6 @@ docker volume create nginx-logs
 
 docker run --name nginx-server -p 80:80 -v nginx-logs:/var/log/nginx -d serveur-nginx
 
-docker run --name nginx-logs-collector -v nginx-logs:/var/log/nginx -d -it go-access
+docker run --name logs-collector -v nginx-logs:/var/log/nginx -d -it go-access
 
-docker exec -it nginx-logs-collector bash -c "goaccess -f /var/log/nginx/access.log"
+docker exec -it logs-collector bash -c "goaccess -f /var/log/nginx/access.log"
